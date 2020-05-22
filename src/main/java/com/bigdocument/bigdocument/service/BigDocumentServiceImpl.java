@@ -1,5 +1,7 @@
 package com.bigdocument.bigdocument.service;
 
+import com.bigdocument.bigdocument.domain.BigDocumentResponse;
+
 public class BigDocumentServiceImpl implements BigDocumentService {
 
     public BigDocumentServiceImpl() {
@@ -7,7 +9,9 @@ public class BigDocumentServiceImpl implements BigDocumentService {
     }
 
     @Override
-    public String getBigDocument() {
-        return "Hello World";
+    public BigDocumentResponse getBigDocument() {
+        BigDocumentResponse response = new BigDocumentResponse();
+        response.setDocument("Hello world");
+        return response;
     }
 }
