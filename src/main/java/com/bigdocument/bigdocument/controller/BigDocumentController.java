@@ -1,5 +1,6 @@
 package com.bigdocument.bigdocument.controller;
 
+import com.bigdocument.bigdocument.service.BigDocumentService;
 import org.junit.jupiter.api.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,12 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag("big-document-controller")
 public class BigDocumentController {
 
+    private BigDocumentService bigDocumentService;
+
     @Autowired
-    public BigDocumentController() {
+    public BigDocumentController(BigDocumentService bigDocumentService) {
+        this.bigDocumentService = bigDocumentService;
     }
 
     @GetMapping
     public String getBigDocument(){
-        return "Hello world";
+        return bigDocumentService.getBigDocument();
     }
 }
