@@ -22,19 +22,19 @@ public class BigDocumentServiceImpl implements BigDocumentService {
     @Override
     public List<BigDocumentResponse> getBigDocumentList() {
 
-        return generateBigDcumentList(100);
+        return null;
     }
 
     @Override
     public List<BigDocumentResponse> getPagedDocumentList(PageRequest request) {
-        return generateBigDcumentList(request.getPageSize());
+        return generateBigDcumentList(request);
     }
 
-    private List<BigDocumentResponse> generateBigDcumentList(int number) {
+    private List<BigDocumentResponse> generateBigDcumentList(PageRequest request) {
         List<BigDocumentResponse> list = new ArrayList<>();
-        for (int i = 0; i < number; i++) {
+        for (int i = 0; i < request.getPageSize(); i++) {
             BigDocumentResponse response = new BigDocumentResponse();
-            response.setDocument("Hello world");
+            response.setDocument("Hello word " + request.getOffset() + i);
             list.add(response);
         }
         return list;
