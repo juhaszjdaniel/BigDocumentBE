@@ -1,8 +1,16 @@
 package com.bigdocument.bigdocument.service;
 
 import com.bigdocument.bigdocument.domain.BigDocumentResponse;
+import com.bigdocument.bigdocument.domain.PageRequest;
+
+import java.util.List;
 
 public interface BigDocumentService {
 
-    public BigDocumentResponse getBigDocument();
+    BigDocumentResponse getBigDocument();
+
+    List<BigDocumentResponse> getBigDocumentList();
+
+    List<BigDocumentResponse> getPagedDocumentList(PageRequest request);
+
 }
