@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class BigDocumentConfig {
 
     @Bean
-    public BigDocumentService bigDocumentService(){
+    public BigDocumentService bigDocumentService() {
         return new BigDocumentServiceImpl();
     }
 }
