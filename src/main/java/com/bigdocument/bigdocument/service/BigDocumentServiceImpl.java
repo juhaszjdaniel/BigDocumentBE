@@ -17,19 +17,6 @@ public class BigDocumentServiceImpl implements BigDocumentService {
     }
 
     @Override
-    public BigDocumentResponse getBigDocument() {
-        BigDocumentResponse response = new BigDocumentResponse();
-        response.setDocument("Hello world");
-        return response;
-    }
-
-    @Override
-    public List<BigDocumentResponse> getBigDocumentList() {
-
-        return null;
-    }
-
-    @Override
     public List<BigDocumentResponse> getPagedDocumentList(PageRequest request) {
         return generateBigDcumentList(request);
     }

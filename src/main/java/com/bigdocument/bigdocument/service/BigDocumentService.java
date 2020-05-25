@@ -7,10 +7,6 @@ import java.util.List;
 
 public interface BigDocumentService {
 
-    BigDocumentResponse getBigDocument();
-
-    List<BigDocumentResponse> getBigDocumentList();
-
     List<BigDocumentResponse> getPagedDocumentList(PageRequest request);
 
 }
