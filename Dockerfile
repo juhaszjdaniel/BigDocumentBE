@@ -1,17 +1,10 @@
-# Start with a base image containing Java runtime
-FROM openjdk:8-jdk-alpine
+FROM maven:3.5.2-jdk-8-alpine AS MAVEN_BUILD
 
-# Add a volume pointing to /tmp
-VOLUME /tmp
-
-# Make port 8080 available to the world outside this container
-EXPOSE 8080
-
-# The application's jar file
-ARG JAR_FILE=target/big-document-0.0.1-SNAPSHOT.jar
-
-# Add the application's jar to the container
-ADD ${JAR_FILE} big-document.jar
-
-# Run the jar file
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/big-document.jar"]
+COPY pom.xml /build/
+COPY src /build/src/
+WORKDIR /build/
+RUN mvn package
+FROM openjdk:8-jre-alpine
+WORKDIR /app
+COPY --from=MAVEN_BUILD /build/target/big-document-0.0.1-SNAPSHOT.jar /app/
+ENTRYPOINT ["java", "-jar", "big-document-0.0.1-SNAPSHOT.jar"]
